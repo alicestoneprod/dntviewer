@@ -9,9 +9,10 @@
     <script src="//cdn.jsdelivr.net/zip.js/0.1/inflate.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-    <script src="simplerreader.js"></script>
+    <script src="../simplerreader.js"></script>
     <script src="fileupload.js"></script>
-    <script src="dntreader.js"></script>
+    <script src="../dntreader.js"></script>
+    <script src="../helpers/getNumberPronounce.js"></script>
 
     <script src="columnloader.js"></script>
 
@@ -24,17 +25,17 @@
 
   <body onload="dntPageInit();">
     <div class="container">
-      <a href="/index.html" style="position: absolute; left: 15px; top: 15px">Back to DNT Viewer</a>
+      <a href="./ru.html" style="position: absolute; left: 15px; top: 15px">Обратно к DNT Viewer</a>
       <div class="row">
         <div class="col-xs-12">
           <h1>
-            DNT Column Loader
-            <small>Load all the columns from a bunch of dnt files</small>
+            DNT загрузчик столбцов
+            <small> Загрузите все столбцы из нескольких DNT файлов</small>
           </h1>
           <form id="fileForm">
             <div id="drop_zone" class="bg-info">
-              Drop files here (on this) to upload<br />
-              Or ...<br />
+              Перетащите файлы для загрузки сюда<br />
+              Или же <br />
               <input type="file" id="files" multiple />
               <div id="progress_bar"></div>
             </div>
@@ -44,20 +45,28 @@
       </div>
       <div class="row">
         <div class="col-xs-4">
-          <textarea id="colresults" class="form-control" rows="15" readonly></textarea>
-          <button class="btn" onclick="clearCols()">Clear</button>
+          <textarea
+            id="colresults"
+            class="form-control"
+            rows="15"
+            readonly
+            style="margin-bottom: 5px"
+          ></textarea>
+          <button class="btn" onclick="clearCols()">Очистить</button>
         </div>
         <div class="col-xs-8">
-          <label>Which Files Contain a Column:</label>
+          <label>Файлы, содержащие колонку:</label>
           <input
             type="text"
             id="searchText"
             class="form-control"
+            placeholder="Введите название колонки"
             oninput="search()"
             onblur="search()"
           />
           <div class="row" id="searchresults"></div>
-          <button class="btn btn-link" onClick="more()">more</button>
+          <button class="btn btn-link" onClick="more()">больше</button>
+          <button class="btn btn-link" onClick="full()">полностью</button>
         </div>
       </div>
     </div>
